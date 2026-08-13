@@ -15,3 +15,14 @@ db.products.insertMany([
     {sku: 'STAN-1', name: 'Stan', description: 'Observability guru', price: 67, instock: 1000, categories: ['Robot', 'Artificial Intelligence']},
     {sku: 'CNA', name: 'Cybernated Neutralization Android', description: 'Is your spaceship a bit whiffy? This little fellow will bring a breath of fresh air', price: 1000, instock: 0, categories: ['Robot']}
 ]);
+// full text index for searching
+db.products.createIndex({
+    name: "text",
+    description: "text"
+});
+
+// unique index for product sku
+db.products.createIndex(
+    { sku: 1 },
+    { unique: true }
+);
